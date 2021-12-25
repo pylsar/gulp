@@ -1,5 +1,6 @@
 import fileinclude from "gulp-file-include";
 import versionNumber from "gulp-version-number";
+// import pug from "gulp-pug"; //[PUG]
 
 export const html = () => {
     return app.gulp.src(app.path.src.html)
@@ -9,7 +10,13 @@ export const html = () => {
                 message: "Error: <%= error.message %>"
             }))
         )
-        .pipe(fileinclude())
+        .pipe(fileinclude())    //[PUG] не нужен при pug 
+        // .pipe(pug({                //[PUG]
+        //     //сжатие html файла
+        //     pretty: true,
+        //     //показывать в терминале какой файл обработан
+        //     verbose: true
+        // }))
         .pipe(app.plugins.replace(/@img\//g, 'img/'))
         .pipe(
             versionNumber({
