@@ -27,11 +27,10 @@ function watcher(){
 };
 
 
-
 const mainTasks = gulp.parallel(copy, html);
 
 //Построение сценариев выполнения задач
-const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server)) // последовательность важна 
+const dev = gulp.series(reset, mainTasks, gulp.parallel( watcher, server)) // последовательность важна 
 
 //выполнение задачи по умолчанию
 gulp.task('default', dev);
